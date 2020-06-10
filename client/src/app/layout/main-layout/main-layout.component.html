@@ -1,0 +1,22 @@
+<div class="row no-gutters">
+  <div class="col-3">
+    <div id="main-sidebar">
+      <div class="logo">
+        <a routerLink="/posts-feed"><h1>Weather UKR</h1></a>
+      </div> <!-- /.logo -->
+      <ul class="main-menu">
+        <li class="home" routerLinkActive="active-home">
+          <a [routerLink]="['/user', localStorageServices.userData.localId]">Home</a>
+        </li>
+        <li class="settings" routerLinkActive="active-settings">
+          <a routerLink="/settings">Settings</a>
+        </li>
+      </ul>
+    </div> <!-- /#main-sidebar -->
+  </div>
+  <div class="col-9">
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

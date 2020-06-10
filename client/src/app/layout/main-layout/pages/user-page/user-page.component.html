@@ -1,0 +1,51 @@
+<div class="textInfo">
+  <h2 class="hello">
+    Hello, {{this.localStorageServices.userData.profile.userName}}
+  </h2>
+  <h5>
+    This weather in the your city: <span style="font-weight: 500; color: #5d595f">{{this.localStorageServices.userData.profile.city}}</span>
+  </h5>
+</div>
+<div class="row">
+  <div class="errorMessage" *ngIf="errorMessage else blocks">
+    <p>{{errorMessage}}</p>
+  </div>
+  <ng-template #blocks>
+    <div class="weatherContainer" *ngFor="let day of WeatherDays">
+      <div id="divWeatherMain" >
+        <div *ngIf="day.isDay" class="weatherWidgetRow">
+          <i class="fas fa-3x fa-sun sun"></i>
+        </div>
+        <div *ngIf="!day.isDay" class="weatherWidgetRow">
+          <i class="fas fa-3x fa-moon moon"></i>
+        </div>
+        <div class="weatherWidgetRow cloudDiv">
+          <i class="fas fa-cloud fa-3x cloud"></i>
+        </div>
+        <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">{{day.temp_celcius}}°</div>
+        <div class="weatherWidgetRow" style="font-size: 12px;">{{day.temp_min}}° / {{day.temp_max}}°</div>
+        <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like: {{day.temp_feels_like}}°</div>
+        <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">{{day.name}}</div>
+        <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: {{day.humidity}}%</div>
+        <div class="weatherWidgetRow">{{day.date | date:'d/M/yy'}}</div>
+      </div>
+    </div>
+  </ng-template>
+
+</div>
+
+
+
+<!--=================================================-->
+<ng-template #loadingBlock>
+  <div class="loadingBlock" style="margin-top: 20%">
+    <div class="loadingLabel">
+      <div class="cssload-thecube">
+        <div class="cssload-cube cssload-c1"></div>
+        <div class="cssload-cube cssload-c2"></div>
+        <div class="cssload-cube cssload-c4"></div>
+        <div class="cssload-cube cssload-c3"></div>
+      </div>
+    </div>
+  </div>
+</ng-template>
